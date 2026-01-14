@@ -4,19 +4,33 @@
 
 <t:pageTemplate pageTitle="Users">
     <h1>Users</h1>
-    <c:if test="${pageContext.request.isUserInRole('WRITE_USERS')}">
-        <a href="${pageContext.request.contextPath}/AddUser" class="btn btn-primary mb-3">Add User</a>
-    </c:if>
-    <div class="container text-center">
-        <c:forEach var="user" items="${users}">
-            <div class="row">
-                <div class="col">
-                        ${user.username}
+    <form method="POST" action="${pageContext.request.contextPath}/Users" >
+        <c:if test="${pageContext.request.isUserInRole('WRITE_USERS')}">
+            <a href="${pageContext.request.contextPath}/AddUser" class="btn btn-primary mb-3">Add User</a>
+        </c:if>
+        <button class="btn btn-secondary mb-3" type="submit">Invoice</button>
+        <div class="container text-center">
+            <c:forEach var="user" items="${users}">
+                <div class="row">
+                    <div class="col">
+                        <input type="checkbox" name="user_Ids" value="${user.id}"/>
+                    </div>
+                    <div class="col">
+                            ${user.username}
+                    </div>
+                    <div class="col">
+                            ${user.email}
+                    </div>
                 </div>
-                <div class="col">
-                        ${user.email}
-                </div>
-            </div>
+            </c:forEach>
+        </div>
+    </form>
+    <c:if test="${not empty invoices}">
+        <h2>Invoices</h2>
+        <c:forEach var="username" items="${invoices}" varStatus="status">
+                ${status.index+1}.${username}
+                <br/>
         </c:forEach>
-    </div>
+    </c:if>
+
 </t:pageTemplate>

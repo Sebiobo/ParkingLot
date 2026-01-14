@@ -1,10 +1,10 @@
 package com.parking.parkinglot.common;
 
 public class CarDto {
-    Long id;
-    String licensePlate;
-    String parkingSpot;
-    String ownerName;
+    private Long id;
+    private String licensePlate;
+    private String parkingSpot;
+    private String ownerName;
 
     public CarDto(Long id, String licensePlate, String parkingSpot, String ownerName) {
         this.id = id;
