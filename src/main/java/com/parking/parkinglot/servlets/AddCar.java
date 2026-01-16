@@ -31,7 +31,6 @@ public class AddCar extends HttpServlet {
         String licensePlate=request.getParameter("licensePlate");
         String parkingSpot=request.getParameter("parkingSpot");
         Long userId=Long.parseLong(request.getParameter("owner_id"));
-        Long carId=Long.parseLong(request.getParameter("car_id"));
 
         carsBean.createCar(licensePlate,parkingSpot,userId);
         response.sendRedirect(request.getContextPath() + "/Cars");

@@ -47,8 +47,7 @@
                 <div class="invalid-feedback">Please select an owner.</div>
             </div>
         </div>
-
-        <button class="btn btn-primary" type="submit">Save</button>
+            <button class="btn btn-primary" type="submit">Save</button>
     </form>
 
 </t:pageTemplate>

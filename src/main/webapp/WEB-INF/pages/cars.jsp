@@ -11,6 +11,7 @@
         <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">
         <button class="btn btn-danger" type="submit">Delete Cars</button>
         </c:if>
+
         <div class="container text-center">
             <c:forEach var="car" items="${cars}">
                 <div class="row">

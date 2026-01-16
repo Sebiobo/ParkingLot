@@ -89,15 +89,25 @@ public class CarsBean {
         LOG.info("updateCar");
 
         Car car = entityManager.find(Car.class, carId);
+        if (car == null) {
+            return;
+        }
+
+
         car.setLincensePlate(licensePlate);
         car.setParkingSpot(parkingSpot);
 
-        User oldUser=car.getOwner();
-        oldUser.getCars().remove(car);
 
-        User user=entityManager.find(User.class, userId);
-        user.getCars().add(car);
-        car.setOwner(user);
+        if (car.getOwner().getId() != userId) {
+            User newUser = entityManager.find(User.class, userId);
+            if (newUser != null) {
+
+                car.setOwner(newUser);
+            }
+        }
+
+         entityManager.merge(car);
+
     }
     public void deleteCarsByIds(Collection<Long> carIds){
         LOG.info("deleteCar");
